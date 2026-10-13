@@ -1,0 +1,50 @@
+<h2 mat-dialog-title class="text-center">{{titulo}}</h2>
+
+<mat-dialog-content>
+  <small *ngIf="submitted && formGasto.invalid" class="text-red-600">Faltan campos obligatorios por completar ( *
+    )</small>
+
+  <form [formGroup]="formGasto">
+    <div class="relative mb-4">
+      <label for="tipo" class="leading-7 text-sm text-gray-600">Nombre</label><span class="text-red-600"> *</span>
+      <input type="text" id="tipo" name="tipo"
+        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        formControlName="tipo">
+    </div>
+
+    <div class="relative mb-4">
+      <label for="fecha" class="leading-7 text-sm text-gray-600">Fecha</label><span class="text-red-600"> *</span>
+      <input type="date"
+        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        formControlName="fecha">
+
+    </div>
+
+
+    <div class="relative mb-4">
+      <label for="monto" class="leading-7 text-sm text-gray-600">Monto</label><span class="text-red-600"> *</span>
+      <input type="number" id="monto" name="monto"
+        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        formControlName="monto">
+    </div>
+
+
+    <div class="relative mb-4">
+      <label for="descripcion" class="leading-7 text-sm text-gray-600">Descripcion</label><span class="text-red-600">
+        *</span>
+      <input type="text" id="descripcion" name="descripcion"
+        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        formControlName="descripcion">
+    </div>
+
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div *ngIf="loading" class="loading me-5">
+    <mat-spinner [diameter]="20"></mat-spinner>
+  </div>
+  <button mat-stroked-button color="warn" mat-dialog-close>Cancelar</button>
+  <button mat-stroked-button color="primary" type="submit" (click)="agregarEditarGasto()">Aplicar</button>
+</mat-dialog-actions>

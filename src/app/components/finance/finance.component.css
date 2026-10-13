@@ -1,0 +1,21 @@
+.chart-container {
+  overflow-x: auto; /* Habilita el scroll horizontal */
+  overflow-y: hidden;
+  width: 100%; /* Toma el ancho completo del padre */
+  /* background-color: #1f2937; */
+  border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+  #chart,
+  #salesChart,
+  #lineChart,
+  #salesByVendorChart {
+    min-width: 600px;
+  }
+}
+/* #chart,
+#salesChart,
+#lineChart {
+  min-width: 600px;
+} */

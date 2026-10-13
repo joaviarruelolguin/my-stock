@@ -1,0 +1,225 @@
+<div class="animate-slide-in">
+  <div class="p-4 sm:ml-64">
+    <!-- <div class="w-full mx-auto p-5 rounded-lg shadow-md  bg-white mt-1 bg-white ">
+      <div class="w-full flex items-baseline">
+        <div
+          class="me-4 mt-5 text-4xl font-bold leading-none tracking-tight text-gray-700 md:text-4xl lg:text-5xl sm:3xl no-select ">
+          Finanzas
+        </div>
+      </div>
+    </div> -->
+    <app-banner>{{subtitle}}</app-banner>
+  </div>
+
+  <div class="p-4 sm:p-0 sm:ml-64">
+
+    <button mat-raised-button color="primary" (click)="exportarTablaExcel()" class="ms-5">Exportar
+      Balances</button>
+
+
+    <div class="flex flex-col justify-evenly items-center md:flex-row md:flex-wrap sm:mt-5">
+      <div
+        class="bg-white rounded-lg shadow mt-5 p-4 flex items-center justify-between w-full sm:w-64  border p-5 shadow-md">
+        <div class="flex items-center ">
+          <div class="bg-[#1f2937] rounded-full p-3 ">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"
+              aria-hidden="true" class="w-6 h-6 text-white">
+              <path
+                d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-500 text-sm">Ventas de Hoy</p>
+          <ng-container *ngIf="!loading && dataLoaded; else loadingSpinner">
+            <p class="text-2xl text-green-600"> {{totalVentasDia|
+              currency:'$':'symbol':'1.0'}}</p>
+          </ng-container>
+          <ng-template #loadingSpinner>
+            <div class="flex justify-end">
+              <div role="status">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+          <!-- <app-count-up *ngIf="!loading" prefix="$" [target]="totalVentasDia" [duration]="2000"
+            class="text-2xl text-green-600  "></app-count-up> -->
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-lg shadow mt-5  p-4 flex items-center justify-between w-full sm:w-64  border p-5 shadow-md">
+        <div class="flex items-center ">
+          <div class="bg-[#1f2937] rounded-full p-3 ">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"
+              aria-hidden="true" class="w-6 h-6 text-white">
+              <path
+                d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z" />
+            </svg>
+
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-500 text-sm">Ventas Mes Actual</p>
+          <ng-container *ngIf="!loading && dataLoaded; else loadingSpinner">
+            <p class="text-2xl text-green-600">{{totalVentasMesActual| currency:'$':'symbol':'1.0'}}</p>
+          </ng-container>
+          <ng-template #loadingSpinner>
+            <div class="flex justify-end">
+              <div role="status">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+          <!-- <app-count-up *ngIf="!loading" prefix="$" [target]="totalVentasMesActual" [duration]="2000" class="text-2xl
+                      text-green-600 animation"></app-count-up> -->
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-lg shadow mt-5  p-4 flex items-center justify-between w-full sm:w-64  border p-5 shadow-md">
+        <div class="flex items-center ">
+          <div class="bg-[#1f2937] rounded-full p-3 ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" class="w-6 h-6 text-white" aria-hidden="true"
+              viewBox="0 0 576 512">
+              <path
+                d="M384 352c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0c17.7 0 32-14.3 32-32l0-160c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 82.7L342.6 137.4c-12.5-12.5-32.8-12.5-45.3 0L192 242.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0L320 205.3 466.7 352 384 352z" />
+            </svg>
+
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-500 text-sm">Gastos Mes Actual</p>
+          <ng-container *ngIf="!loading && dataLoaded; else loadingSpinner">
+            <p class="text-2xl text-red-600 ">{{totalGastosMesActual|
+              currency:'$':'symbol':'1.0'}}
+            </p>
+          </ng-container>
+          <ng-template #loadingSpinner>
+            <div class="flex justify-end">
+              <div role="status">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+          <!-- <app-count-up *ngIf="!loading" prefix="$" [target]="totalGastosMesActual" [duration]="2000" class="text-2xl
+                      text-red-600 ">></app-count-up> -->
+        </div>
+      </div>
+
+
+
+      <div
+        class="bg-white rounded-lg shadow mt-5  p-4 flex items-center justify-between w-full sm:w-64  border p-5 shadow-md">
+        <div class="flex items-center ">
+          <div class="bg-[#1f2937] rounded-full p-3 ">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24px" width="24px" viewBox="0 0 640 512"
+              class="w-6 h-6 text-white">
+              <path
+                d="M384 32l128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L398.4 96c-5.2 25.8-22.9 47.1-46.4 57.3L352 448l160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-192 0-192 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l160 0 0-294.7c-23.5-10.3-41.2-31.6-46.4-57.3L128 96c-17.7 0-32-14.3-32-32s14.3-32 32-32l128 0c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288l144.9 0L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320l144.9 0L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z" />
+            </svg>
+
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-500 text-sm">Balance Mes Actual</p>
+          <ng-container *ngIf="!loading && dataLoaded; else loadingSpinner">
+            <p class="text-2xl text-green-600" [ngClass]="{
+             'text-red-600 ': balanceMesActual < 0,
+              'text-green-600': balanceMesActual >= 0
+            }">{{balanceMesActual|
+              currency:'$':'symbol':'1.0'}}</p>
+          </ng-container>
+          <ng-template #loadingSpinner>
+            <div class="flex justify-end">
+              <div role="status">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+          <!-- <app-count-up *ngIf="!loading" prefix="$" [target]="balanceMesActual" [duration]="2000" class="text-2xl"
+            [ngClass]="{
+                         'text-red-600 ': balanceMesActual < 0,
+                          'text-green-600': balanceMesActual >= 0
+                        }"></app-count-up> -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <div
+        class="relative mt-10 flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border sm:w-11/12 sm:mx-auto w-full h-full">
+        <div class="pt-6 px-2 pb-0 w-full h-full chart-container">
+          <span class="ms-2 text-gray-700 font-bold">
+            Gastos y Ventas
+          </span>
+          <div id="lineChart"></div>
+        </div>
+      </div>
+      <div
+        class="relative mt-10 flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border sm:w-11/12 sm:mx-auto w-full h-full">
+        <div class="pt-6 px-2 pb-0 w-full h-full chart-container">
+          <span class="ms-2 text-gray-700 font-bold">
+            Ventas por vendedor
+          </span>
+          <div id="salesByVendorChart"></div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+
+  <!-- <div class="flex flex-col md:flex-row flex-wrap justify-evenly ">
+            <div
+              class="relative mt-10 flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border  w-full md:w-5/12 h-full">
+              <div class="pt-6 px-2 pb-0 w-full h-full chart-container">
+                <span class="ms-2 text-gray-700 font-bold">
+                  Gastos y Ventas
+                </span>
+                <div id="lineChart"></div>
+              </div>
+            </div>
+            <div
+              class="relative mt-10 flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md border  w-full md:w-6/12 h-full">
+              <div class="pt-6 px-2 pb-0 w-full h-full chart-container">
+                <span class="ms-2 text-gray-700 font-bold">
+                  Ventas por vendedor
+                </span>
+                <div id="salesByVendorChart"></div>
+              </div>
+            </div>
+          </div> -->

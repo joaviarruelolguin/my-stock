@@ -1,0 +1,42 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  padding: 8px 16px;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  margin-top: 20px;
+}
+
+.colecciones {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
+.not-image {
+  background-image: url("../../../assets/not-image.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

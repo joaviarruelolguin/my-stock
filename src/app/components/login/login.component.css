@@ -1,0 +1,13 @@
+/* form {
+  padding: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
+.bg-custom {
+  background: linear-gradient(
+    90deg,
+    rgb(138, 175, 230) 1%,
+    rgba(11, 20, 35, 0.9472163866) 57%,
+    rgb(11, 20, 35) 99%
+  );
+}

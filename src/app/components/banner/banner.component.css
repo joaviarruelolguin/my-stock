@@ -1,0 +1,7 @@
+.panel-actions {
+  visibility: hidden;
+}
+
+.card-body:hover .panel-actions {
+  visibility: visible;
+}

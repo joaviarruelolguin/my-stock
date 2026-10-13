@@ -1,0 +1,46 @@
+<form [formGroup]="appointmentForm" (ngSubmit)="submit()" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+  <div class="mb-4">
+    <label class="block text-gray-700">Cliente:</label>
+    <input type="text" formControlName="cliente" required class="w-full p-2 border rounded-lg">
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Número de WhatsApp:</label>
+    <input type="tel" formControlName="telefono" required class="w-full p-2 border rounded-lg"
+      placeholder="+549123456789">
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Profesional:</label>
+    <input type="text" formControlName="profesional" required class="w-full p-2 border rounded-lg">
+  </div>
+
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Fecha:</label>
+    <input type="date" formControlName="fecha" required class="w-full p-2 border rounded-lg">
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Hora:</label>
+    <input type="time" formControlName="hora" required class="w-full p-2 border rounded-lg">
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Descripción:</label>
+    <textarea formControlName="descripcion" required class="w-full p-2 border rounded-lg"></textarea>
+  </div>
+
+  <div class="mb-4 flex items-center">
+    <input type="checkbox" formControlName="enviarAviso" class="mr-2">
+    <label class="text-gray-700">Enviar aviso de reserva creada</label>
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700">Recordatorio:</label>
+    <input type="datetime-local" formControlName="recordatorio" class="w-full p-2 border rounded-lg">
+  </div>
+
+  <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">Guardar
+    Cita</button>
+</form>

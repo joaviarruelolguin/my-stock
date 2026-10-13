@@ -1,0 +1,65 @@
+.gradiant-articles {
+  background-color: #ffffff;
+  background-image: radial-gradient(#db80ff 0.5px, transparent 0.5px),
+    radial-gradient(#db80ff 0.5px, #ffffff 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.bg-custom {
+  position: relative;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 576px) {
+  .bg-custom {
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.scrollable-container {
+  height: 80vh; /* Altura fija para el contenedor */
+  background-color: #fff;
+  overflow-y: scroll; /* Habilita el desplazamiento vertical */
+  border-radius: 0.5rem; /* Mantén el borde redondeado */
+}
+
+.scrollable-container img {
+  width: 100%; /* Asegura que la imagen ocupe el ancho completo */
+  object-fit: cover; /* Ajusta cómo se recorta la imagen */
+}
+
+.bg-abstract {
+  background-image: url("../../../assets/bg-abstract.webp");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 756px) {
+  .bg-abstract {
+    background-size: contain;
+    background-position: 25% 25%;
+  }
+}
+
+.bg-custom {
+  background-color: rgba(0, 0, 0, 0.124);
+  border-radius: 10px;
+}
+
+.icon {
+  width: 5rem;
+  height: 5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}

@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+  .col-flex {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .name-responsive {
+    text-align: center;
+  }
+}
